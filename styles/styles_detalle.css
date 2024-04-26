@@ -6,8 +6,6 @@
   margin: 0;
 }
 
-
-
 /* Fonts con url */
 /*@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')*/
 .ubuntu-light {
@@ -15,43 +13,36 @@
   font-weight: 300;
   font-style: normal;
 }
-
 .ubuntu-regular {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
 .ubuntu-medium {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-style: normal;
 }
-
 .ubuntu-bold {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
-
 .ubuntu-light-italic {
   font-family: "Ubuntu", sans-serif;
   font-weight: 300;
   font-style: italic;
 }
-
 .ubuntu-regular-italic {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   font-style: italic;
 }
-
 .ubuntu-medium-italic {
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   font-style: italic;
 }
-
 .ubuntu-bold-italic {
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
@@ -67,12 +58,90 @@
   color:var(--texto-blanco)
 }
 
-.texto-blanco {
-  color: var(--texto-blanco);
+/* Header*/
+.parteArriba {
+  background-color: var(--rojo);
+  height: 14vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+}
+.header_logo {
+  text-decoration: none;
+  display: flex;
+  padding-top: 2vh;
+}
+.header_menu {
+  display: flex;
+  gap: 8px;
+  padding-top: 2vh;
 }
 
+/* Animación del botón para que baile*/
+.boton_CAC-movies:hover {
+  animation: shaking 2s infinite;
+}
+@keyframes shaking {
+  10% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  20% {
+    transform: scale(1.05) rotate(-5deg);
+  }
+  30% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  40% {
+    transform: none;
+  }
+}
 
-
+.aRojo:hover {
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+.header_menu a {
+  text-decoration: none;
+  color: var(--texto-blanco);
+}
+.header_logo_link {
+  color: var(--texto-blanco);
+  text-decoration: none;
+}
+.botones_header {
+  background: var(--rojo);
+  padding: 13px;
+  border-radius: 5px;
+}
+.botones_header:hover {
+  background-color: var(--rojo);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
+#header_iniciar_sesion {
+  background: var(--fondo-negro);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 14vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14vw;
+  min-height: 6vh;
+  max-width: 14vw;
+  max-height: 6vh;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#header_iniciar_sesion:hover {
+  background-color: var(--rojo);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+}
 
 /* Main */
 /*Parte_arriba*/
@@ -82,6 +151,7 @@
     url(../assets/portadasPelis/garfield_fondo.jpg);
   background-size: cover;
   background-position: center;
+  padding-top: 150px;
 }
 .parte_arriba img{
   max-width: 100%;
@@ -150,6 +220,38 @@
 .rojizo{
   color: var(--rojo);
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1px;
 }
 /* FIN del Main*/
+
+/* Inicio del FOOTER */
+.footer {
+  background-color: var(--rojo);
+  padding-bottom: 10vh;
+  padding-top: 12px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+.footer_menu {
+  height: 5vh;
+  display: block;
+  text-align: center;
+  
+}
+.footer_menu a {
+  padding-left: 1vh;
+  padding-right: 1vh;
+  text-decoration: none;
+  color: var(--texto-blanco);
+  display: block;
+  margin-bottom: 0.5vh;
+}
+#footer_administrador_peliculas {
+  background: #181419;
+  border-radius: 5px;
+  padding: 1vh;
+  font-size: 1rem;
+}
+/* FIN del FOOTER */
+
