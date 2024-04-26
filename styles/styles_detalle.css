@@ -59,7 +59,7 @@
 }
 
 /* Header*/
-.parteArriba {
+.barra_de_arriba {
   background-color: var(--rojo);
   height: 14vh;
   width: 100%;
@@ -227,7 +227,7 @@
 /* Inicio del FOOTER */
 .footer {
   background-color: var(--rojo);
-  padding-bottom: 10vh;
+  padding-bottom: 12vh;
   padding-top: 12px;
   height: auto;
   display: flex;
@@ -254,4 +254,128 @@
   font-size: 1rem;
 }
 /* FIN del FOOTER */
+
+/*Media queries para Monitores (BARRA de arriba)*/
+@media screen and (min-width: 769px) {
+  .barra_de_arriba {
+    background-color: var(--rojo);
+    height: 10vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: fixed;
+    z-index: 999;
+  }
+  .header_logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 5vw;
+    padding-top: 2vh;
+  }
+  .header_menu {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 5vw;
+    padding-top: 2vh;
+    gap: 40px;
+  }
+  .botones_header {
+    background: var(--rojo);
+    padding: 2vh;
+    border-radius: 5px;
+  }
+  #header_iniciar_sesion {
+    background: #181419;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 14vw;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 14vw;
+    min-height: 6vh;
+    max-width: 14vw;
+    max-height: 6vh;
+    text-align: center;
+  }
+
+  /*MediaQuerie Parte_arriba*/
+  .parte_arriba{
+    height: 560px;
+    background-image: linear-gradient(to right top, #0000008a, #0000008a),
+      url(../assets/portadasPelis/garfield_fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    padding-top: 0px;
+    padding: 0px 0px;
+  }
+  .division_arriba{
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-right: 0vw;
+    padding-top: 150px;
+  }
+  .parte_arriba img{ /*Imagen de Peli*/
+    max-width: none;
+    height: 42vh;
+    display: inherit;
+    min-height: 400px;
+  }
+  .info_peli{
+    gap: 20px;
+    text-align:left;
+    padding: 0px 0px;
+    margin-left: 150px;
+  }
+ 
+  /*MediaQuerie Parte_abajo*/
+  .parte_abajo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+    gap:30px;
+  }
+  .video_container{
+    padding-top: 20px;
+  }
+  .video_avance{
+    padding-top: 10px;
+  }
+  .redes_sociales{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    padding: 0 10px;
+  }
+  .redes_sociales a{
+    color:var(--texto-blanco);
+    text-decoration: none;
+  }
+  .loguitos{
+    display: flex;
+    justify-content:space-between;
+    font-size: 40px;
+    padding-bottom: 0vh;
+    padding-top: 70px;
+  }
+  .info_titulo{
+    padding-left: 15px;
+    text-decoration:underline;
+  }
+  .info_tabla{
+    border-collapse: separate;
+    border-spacing: 15px;
+    padding-bottom: 40px;
+  }
+  /* FIN de Parte de Abajo y del Main*/
+
+}
 
