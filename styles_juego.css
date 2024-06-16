@@ -1,0 +1,118 @@
+/* Selector universal */
+* {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  margin: 0px;
+  background-color:lightgrey;
+}
+
+/* Defino las variables */
+:root {
+  --rojo: #9f3647;
+}
+
+
+.principal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 800px;
+}
+
+.contenedor {
+  display: flex; 
+}
+
+.contenedor > .pais{
+  cursor: pointer;
+
+  /*Tamaño de las Tarjetas*/
+  width: 18vw;
+  height: 16vh;
+
+  /*Tamaño de la Letra dentro de las Tarjetas*/
+  font-size: 43px;
+  
+  
+  font-weight: bold; 
+  border: 2px solid black;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 8px; /* Separación de todas las Tarjetitas */
+}
+
+
+
+
+/* COLORES */
+.rojo {
+  background-color: red;
+  color: white; 
+}
+
+.azul {
+  background-color: blue;
+  color: white; 
+}
+
+.amarillo {
+  background-color: yellow;
+  color: black; 
+}
+
+.gris {
+  background-color: lightgrey;
+  color: black;
+}
+
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Para Celulares (768px o mas) */
+@media only screen and (max-width: 1242px){
+
+  .principal{
+    height: 100%;
+  }
+
+  .contenedor > .pais{
+    /*Tamaño de las Tarjetas*/
+    width: 17vw;
+    height: 16vh;
+  
+    /*Tamaño de la Letra dentro de las Tarjetas*/
+    font-size: 32px;
+  }
+
+}
+
+
+
+/* Para Celulares (768px o mas) */
+@media only screen and (max-width: 768px){
+
+  .principal{
+    height: 100%;
+  }
+
+  .contenedor > .pais{
+    /*Tamaño de las Tarjetas*/
+    width: 18vw;
+    height: 16vh;
+
+    margin: 4px; /* Separación de todas las Tarjetitas */
+
+  
+    /*Tamaño de la Letra dentro de las Tarjetas*/
+    font-size: 19px;
+  }
+
+}

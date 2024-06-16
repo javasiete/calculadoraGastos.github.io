@@ -1,148 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Codigo Secreto JavaSiete</title> <!-- TITULO EN LA PESTAÑA -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CAC-MOVIES</title>
-  <!-- Favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-  <link rel="manifest" href="./favicon/site.webmanifest" />
-  <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#ffffff" />
-  <!-- Agrego google font para darle estilo a las letras -->
-  <link rel="stylesheet" href="./styles/styles_detalle.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-    rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/c3d324dd6f.js" crossorigin="anonymous"></script>
-</head>
+    <!-- Agrego el link de vinculacion a la Pagina de  Iconos (Favicon) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png"/>
+    <link rel="manifest" href="./favicon/site.webmanifest"/>
+    <link rel="mask-icon" href="./favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+    <meta name="msapplication-TileColor" content="#da532c"/>
+    <meta name="theme-color" content="#ffffff"/>
 
-<body>
-  <header>
-    <div class="barra_de_arriba">
-      <div class="header_logo">
-        <a href="#" class="header_logo_link">
-          <div class="boton_CAC-movies">
-            <i class="fa-solid fa-film"></i>
-            CAC-Movies
-          </div>
-        </a>
+    <!-- Agrego Google font para darle estilo a las letras -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"rel="stylesheet"/>
+    
+    <!-- Link a los Estilos en CSS -->
+    <link rel="stylesheet" href="/styles_juego.css"/>
+
+    <!-- Agrego el link de vinculacion a la Pagina de Slider (Swiper JS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> 
+
+  </head>
+
+  <body>
+    <!-- Inicio del Header -->
+    <header>
+      <div class="principal">
+        <div id= "bloque1" class="contenedor">
+          <div id="pais1" class="pais" onclick="cambiarColor('pais1')">Cargando...</div>
+          <div id="pais2" class="pais" onclick="cambiarColor('pais2')">Cargando...</div>
+          <div id="pais3" class="pais" onclick="cambiarColor('pais3')">Cargando...</div>
+          <div id="pais4" class="pais" onclick="cambiarColor('pais4')">Cargando...</div>
+          <div id="pais5" class="pais" onclick="cambiarColor('pais5')">Cargando...</div>
+        </div>
+
+        <div id= "bloque2" class="contenedor">
+          <div id="pais6" class="pais" onclick="cambiarColor('pais6')">Cargando...</div>
+          <div id="pais7" class="pais" onclick="cambiarColor('pais7')">Cargando...</div>
+          <div id="pais8" class="pais" onclick="cambiarColor('pais8')">Cargando...</div>
+          <div id="pais9" class="pais" onclick="cambiarColor('pais9')">Cargando...</div>
+          <div id="pais10" class="pais" onclick="cambiarColor('pais10')">Cargando...</div>
+        </div>
+
+        <div id= "bloque3" class="contenedor">
+          <div id="pais11" class="pais" onclick="cambiarColor('pais11')">Cargando...</div>
+          <div id="pais12" class="pais" onclick="cambiarColor('pais12')">Cargando...</div>
+          <div id="pais13" class="pais" onclick="cambiarColor('pais13')">Cargando...</div>
+          <div id="pais14" class="pais" onclick="cambiarColor('pais14')">Cargando...</div>
+          <div id="pais15" class="pais" onclick="cambiarColor('pais15')">Cargando...</div>
+        </div>
+
+        <div id= "bloque4" class="contenedor">
+          <div id="pais16" class="pais" onclick="cambiarColor('pais16')">Cargando...</div>
+          <div id="pais17" class="pais" onclick="cambiarColor('pais17')">Cargando...</div>
+          <div id="pais18" class="pais" onclick="cambiarColor('pais18')">Cargando...</div>
+          <div id="pais19" class="pais" onclick="cambiarColor('pais19')">Cargando...</div>
+          <div id="pais20" class="pais" onclick="cambiarColor('pais20')">Cargando...</div>
+        </div>
+
+        <div id= "bloque5" class="contenedor">
+          <div id="pais21" class="pais" onclick="cambiarColor('pais21')">Cargando...</div>
+          <div id="pais22" class="pais" onclick="cambiarColor('pais22')">Cargando...</div>
+          <div id="pais23" class="pais" onclick="cambiarColor('pais23')">Cargando...</div>
+          <div id="pais24" class="pais" onclick="cambiarColor('pais24')">Cargando...</div>
+          <div id="pais25" class="pais" onclick="cambiarColor('pais25')">Cargando...</div>
+        </div>
+
+        
+        
       </div>
-      <div class="header_menu">
-        <a href="#">
-          <div class="botones_header">
-            Tendencias
-          </div>
-        </a>
-        <a href="./registro.html" target="_blank">
-          <div class="botones_header">
-            Registrarse
-          </div>
-        </a>
-        <a href="./login.html">
-          <div id="header_iniciar_sesion">
-            Iniciar Sesión
-          </div>
-        </a>
-      </div>
-    </div> <!-- Fin del Div parteArriba -->
-  </header>
+      
 
-
-
-  <!-- Inició de parte_arriba -->
   
-  <div class="parte_arriba">
-    <div class="division_arriba">
-      <div class="portada_peli">
-        <img src="./assets/portadasPelis/garfield.jpg" alt="garfield" class="portada">
-      </div>
-      <div class="info_peli">
-        <div>
-          <h1>Garfield fuera de casa (2024)</h1>
-          01/05/2024 • Animación, Familia, Comedia • 101 Mins.
-        </div>
-        <div>
-          <h2>Descripción</h2>
-          Garfield , el famoso gato amante de la lasaña que odia los lunes, está a punto de vivir una aventura fuera de casa. Tras un inesperado reencuentro con su ausente padre, un sucio gato callejero llamado Vic, Garfield y su amigo canino Odie se ven obligados a abandonar su tranquila vida para unirse a Vic en un divertidísimo atraco de alto riesgo.
-        </div>
-        <div>
-          <h2>Mark Dinald</h2>
-          Director
-        </div>
-      </div> <!--Fin de info_peli-->
-    </div>
-  </div> <!--Fin de parte_arriba-->
+      
+    </header>
 
-  <div class="parte_abajo">
-    <div class="video_container">
-      <h1>
-        Ver trailer
-      </h1>
-      <div class="video_avance">
-        <iframe width="315" height="260" src="https://www.youtube.com/embed/tZwLX1rHyNo?si=nuORmk_aj_so3w12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      </div>
-    <div class="redes_sociales">
-      <div class="loguitos">
-        <a href="https://www.facebook.com/GarfieldMovie" target="_blank">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="https://twitter.com/GarfieldMovie" target="_blank">
-          <i class="fa-brands fa-x-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com/garfieldmovie" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://www.garfield.movie/" target="_blank">
-          <i class="fa-solid fa-link"></i>
-        </a>
-      </div>
-      <div class="info_titulo">
-        <h2>
-          Info:
-        </h2>
-      </div>
-      <div>
-        <table>
-          <tr>
-            <td>Lanzamiento</td>
-            <td>1 de Mayo de 2024</td>
-          </tr>
-          <tr>
-            <td>Lenguajes</td>
-            <td>Doblada al castellano, Subtitulada</td>
-          </tr>
-          <tr>
-            <td>Productora</td>
-            <td>20th Century Fox Home Entertainment</td>
-          </tr>
-          <tr>
-            <td>Presupuesto</td>
-            <td>U$D 50.000.000</td>
-          </tr>
-        </table>
-      </div>  
-    </div> <!--Fin de redes_sociales-->
-  </div> <!--Fin de parte_abajo-->
+    <!-- Inicio del Main -->
+    <main>
+      <!-- Slider main container -->
+      
 
-  <!-- Inició de footer -->
-  <footer class="footer">
-    <div class="footer_menu">
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Preguntas frecuentes</a>
-      <a href="#">Ayuda</a>
-      <a href="#" id="footer_administrador_peliculas">Administrador Películas</a>
-    </div>
-  </footer>
+    </main> 
+
+    <!-- Inicióo del Footer -->
+    <footer>
+      <div class="footer">
+
+      </div>
+    </footer>
+
+    <!-- Script para Logitos de Internet -->
+    <script src="https://kit.fontawesome.com/2de08f3db3.js" crossorigin="anonymous"></script>
+    <!-- Script para los Sliders -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Link al Código de JavaScript -->
+    <script src="javascript_juego.js"></script>
+
+  
+    
 
 
-  <script src="https://kit.fontawesome.com/c3d324dd6f.js" crossorigin="anonymous"></script>
 
-</body>
+
+  </body>
+
+</html>
