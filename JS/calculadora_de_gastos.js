@@ -48,14 +48,9 @@ function crear_tablas_de_gastos_extras() {
         let cell2 = document.createElement('td');
         let input = document.createElement('input');
         input.type = 'text'; // Cambiado a texto para manejar mejor las entradas con comas y puntos
-        input.value = '0,00';
+        input.value = ''; // Inicialmente vacío
         input.id = `gasto_extra_${persona.nombre}`;
         input.className = "input_centrado";
-
-        // Evento para borrar el contenido al hacer clic
-        input.addEventListener('focus', function() {
-            this.value = '';
-        });
 
         // Evento para prevenir el uso de puntos en el input
         input.addEventListener('input', function(e) {
@@ -74,10 +69,9 @@ function crear_tablas_de_gastos_extras() {
     table.appendChild(tbody);
     document.getElementById('div_mencionar_gastos').appendChild(table);
 }
-
 // Función para sumar los gastos extras
 function sumar_gastos_extras() {
-    let mensaje = 'Los gastos son de:\n\n';
+    let mensaje = 'Los gastos extras son de:\n\n';
     let gastosTotales = 0;
 
     personas.forEach(persona => {
