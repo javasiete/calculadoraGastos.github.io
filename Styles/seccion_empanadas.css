@@ -1,0 +1,250 @@
+/* Selector universal */
+* {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+}
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px 0px;
+  
+}
+html{
+  width:100%;
+  height: 100%;
+  
+}
+
+h1{
+  color: orange;
+  text-decoration: underline;
+  padding-bottom: 10px;
+  padding-bottom: 10px;
+}
+h2{
+  padding-bottom: 10px;
+}
+h3{
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.boton_normal{
+  padding: 5px 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0px;
+}
+
+.input_centrado {
+  width: 90px; /* Ancho del input */
+  padding: 2px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+  font-size: 16px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 1*/
+
+#pagina_1{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 2*/
+#pagina_2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario_cantidad_personas_grupo{
+  margin-top: 20px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 2px solid black;
+}
+
+#nombre{
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 3*/
+
+#pagina_3{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin: 30px 0px; 
+}
+
+.div_sabor_de_empanada{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:10px;
+
+  width: 330px;
+
+  border: 1px solid black;
+  padding: 5px 10px;
+  
+  background-color: darkslategray;;
+}
+
+.titulo_sabor{
+  width: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  word-wrap: break-word; 
+  overflow-wrap: break-word; 
+  white-space: normal; 
+  background-color: darkslategray;
+}
+.input_total{
+  width: 40px;
+  height: 35px;
+  font-size: 16px;
+  text-align:center;
+  padding: px; /* Espaciado interno */
+  background-color: rgb(31, 58, 58);
+  
+}
+
+.btn_SumayResta{
+  padding:10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: bisque;
+  color: black;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 4*/
+
+#pagina_4{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#monto_total{
+  background-color: white;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border-style:double;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 5*/
+
+#pagina_5_grupoFamiliar{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pagina_5_cadaUno{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 6*/
+
+#pagina_6_cadaUno{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+/*Si alguien quiere modificar el pedido*/
+
+#div_pagina_usuarios{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#pagina_usuarios{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.boton_nombre_usuario{
+  padding: 10px 15px;
+  background-color: rgb(73, 111, 133);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+}
+
+/*Segunda Parte*/
+#rehacer_pedido{ /*Esta pagina aparece si alguien quiere modificar su pedido*/
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+
+ 
+  
+
+
+
+
+} /*Fin de las Mediaqueries*/

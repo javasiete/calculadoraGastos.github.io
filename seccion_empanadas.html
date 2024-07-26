@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Selector de Empanadas</title> <!-- TITULO EN LA PESTAÑA -->
+
+        <!-- Link a los iconitos -->
+        <script src="https://kit.fontawesome.com/c3d324dd6f.js" crossorigin="anonymous"></script>
+
+        <!-- Link a los Estilos en CSS -->
+        <link rel="stylesheet" href="./Styles/seccion_empanadas.css"/>
+
+    </head>
+
+    <body>
+        <div id="pagina_1">
+            <button type="button" class="boton_normal" onclick="cargarDesdeLocalStorage()">Cargar LocalStorage</button>
+        </div>
+
+
+        <div id="pagina_2">
+             Eliga los gustos de empanadas y clickee en "Finalizar mi Pedido".
+            <div id="numero_de_pedido">Pedido XX/XX</div>
+            <h2 id="nombre_del_usuario"></h2>
+            
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_cortada_cuchillo')">+</button> 
+                <div class="titulo_sabor">Carne Cortada Cuchillo</div> 
+                <input type="number" class="input_total" id="total_carne_cortada_cuchillo" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_cortada_cuchillo')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_suave')">+</button>
+                <div class="titulo_sabor">Carne Suave</div> 
+                <input type="number" class="input_total" id="total_carne_suave" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_suave')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_picante')">+</button>
+                <div class="titulo_sabor">Carne Picante</div> 
+                <input type="number" class="input_total" id="total_carne_picante" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_picante')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('pollo')">+</button>
+                <div class="titulo_sabor">Pollo</div> 
+                <input type="number" class="input_total" id="total_pollo" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('pollo')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('pollo_con_salsa')">+</button>
+                <div class="titulo_sabor">Pollo con Salsa Blanca</div> 
+                <input type="number" class="input_total" id="total_pollo_con_salsa" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('pollo_con_salsa')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('jamon_y_queso')">+</button>
+                <div class="titulo_sabor">Jamón y Queso</div> 
+                <input type="number" class="input_total" id="total_jamon_y_queso" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('jamon_y_queso')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('caprese')">+</button>
+                <div class="titulo_sabor">Caprese
+                </div> 
+                <input type="number" class="input_total" id="total_caprese" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('caprese')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('humita')">+</button>
+                <div class="titulo_sabor">Humita</div> 
+                <input type="number" class="input_total" id="total_humita" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('humita')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('verdura')">+</button>
+                <div class="titulo_sabor">Verdura</div> 
+                <input type="number" class="input_total" id="total_verdura" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('verdura')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('4_quesos')">+</button>
+                <div class="titulo_sabor">4 Quesos</div> 
+                <input type="number" class="input_total" id="total_4_quesos" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('4_quesos')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('roquefort_y_jamon')">+</button>
+                <div class="titulo_sabor">Roquefort y Jamón</div> 
+                <input type="number" class="input_total" id="total_roquefort_y_jamon" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('roquefort_y_jamon')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('queso_y_cebolla')">+</button>
+                <div class="titulo_sabor">Queso y Cebolla</div> 
+                <input type="number" class="input_total" id="total_queso_y_cebolla" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('queso_y_cebolla')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('dulce_de_leche')">+</button>
+                <div class="titulo_sabor">Dulce de Leche</div> 
+                <input type="number" class="input_total" id="total_dulce_de_leche" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('dulce_de_leche')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('cantinpalo')">+</button>
+                <div class="titulo_sabor">Cantinpalo</div> 
+                <input type="number" class="input_total" id="total_cantinpalo" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('cantinpalo')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('atun')">+</button>
+                <div class="titulo_sabor">Atún</div> 
+                <input type="number" class="input_total" id="total_atun" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('atun')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('calabaza')">+</button>
+                <div class="titulo_sabor">Calabaza</div> 
+                <input type="number" class="input_total" id="total_calabaza" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('calabaza')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('queso_al_verdeo')">+</button>
+                <div class="titulo_sabor">Queso al Verdeo</div> 
+                <input type="number" class="input_total" id="total_queso_al_verdeo" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('queso_al_verdeo')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('salchicha_y_cheddar')">+</button>
+                <div class="titulo_sabor">Salchicha y Cheddar</div> 
+                <input type="number" class="input_total" id="total_salchicha_y_cheddar" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('salchicha_y_cheddar')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('cheese_burger')">+</button>
+                <div class="titulo_sabor">Cheese Burger</div> 
+                <input type="number" class="input_total" id="total_cheese_burger" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('cheese_burger')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('ciruela_panceta_y_queso')">+</button>
+                <div class="titulo_sabor">Ciruela, Panceta y Queso</div> 
+                <input type="number" class="input_total" id="total_ciruela_panceta_y_queso" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('ciruela_panceta_y_queso')">-</button>
+            </div>
+            <br>
+
+            <button type="button" onclick="fin_del_pedido()" class="boton_normal">Finalizar mi Pedido</button>
+            <br>
+
+        </div> <!-- Fin Pagina 2 -->
+
+        <div id="pagina_3">
+            <h2 id="muestra_total_de_empanadas">Total de Empanadas</h2>
+            <div class="listado_empanadas_pedidas" id="muestra_sabores_pedidas">Lista</div>
+            <br>
+            ----------------------------------------------------------------
+            <br>
+            <br>
+            <h2>Detalle de los Pedidos</h2>
+            <div class="listado_empanadas_pedidas" id="listado_final">Listado Final</div>
+
+            <br>
+            <div class="info_pantallazo">Recomiendo sacar un pantallazo para tener registro de lo que se pidió. <br>
+                Y si el pedido está correcto, clickee en "Continuar".
+            </div>
+
+            <button type="button" onclick="pagina_4()" class="boton_normal">Continuar</button>
+            <br>
+
+            Si alguien no está conforme con su pedido y quiere rehacerlo, clickee en "Modificar Pedido".
+            <button type="button" onclick="modificar_pedido()" class="boton_normal">Modificar Pedido</button>
+            <br>
+
+        </div> <!-- Fin Pagina 3 -->
+
+        <div id="pagina_4">
+            
+            <h2>División de Gastos</h2>
+            Digiten el monto de lo que costaron las Empanadas:
+            <input type="number" id="monto_total" name="numero" min="0" class="input_centrado">           
+            
+            Indicar si alguno de los Reintegros será por grupo familiar, o si cada uno se paga lo suyo.<br><br>
+            Clickee en una Opción para continuar con la cuenta.<br><br>
+
+            <div class="botones_eleccion">
+                <button type="button" onclick="pagina_6_grupofamiliar()" class="boton_normal">Grupo Familiar</button>
+                <button type="button" onclick="pagina_6_cadaUno()" class="boton_normal">Pago Individual.</button>  
+            </div>
+            <br>
+
+        </div> <!-- Fin Pagina 4 -->
+
+        <div id="pagina_5_grupoFamiliar">
+            <div class="info_pantallazo">Pantalla de grupo Familiar.</div>
+
+            <div id="nombres_grupo_familiar"></div>
+
+            <button type="button" onclick="consola_ver_gastos()" class="boton_normal">Ver Consola</button>
+            <br>
+
+        </div> <!-- Fin Pagina 5 (Grupo Familiar)  -->
+
+        <div id="pagina_5_cadaUno">
+            <h2>División de Gastos</h2>
+
+            <div id="listado_gasto_final"></div>
+
+            <br>
+                <button type="button" onclick="programa_excel()" class="boton_normal">Division de Gastos</button>
+                Te lleva a la siguiente Página para indicar quien abonó las Empanadas.<br>Continuando luego con el "Registro de Gastos" el cual detallara quien le debe a quien.
+            <br>
+            <br>
+                <button type="button" onclick="finalizar_programa()" class="boton_normal">Finalizar Programa</button>
+                Finaliza el Programa y vuelve a la Página de Inicio.
+            <br>
+            
+
+        </div> <!-- Fin Pagina 5 (Cada uno se paga lo suyo) -->
+
+        <div id="pagina_6_cadaUno">
+            <h2>Registro de Gastos</h2>
+            Clickee a la persona que pagó las Empanadas. <br><br>
+
+            <!--Aca aparecen los botones con nombres para indicar quien pagó las Empanadas-->
+            <div id="div_quien_pago_empanadas"></div>
+
+        </div>
+
+        
+        <div id="div_pagina_usuarios">
+            <div class="info_pantallazo">Seleccione a la persona que modificará su pedido.</div>
+            
+            <!--Aca aparecen los botones con nombres para abrir la ventana de Gustos de Empanadas y asi modificar su pedido-->
+            <div id="pagina_usuarios">
+                <div id="botones_con_nombres" class="botones_con_nombres"></div>
+            </div>
+
+            <br>
+                <button type="button" onclick="regresar_pagina_3()" class="boton_normal">Regresar</button>
+            <br>
+
+        </div>
+
+        <div id="rehacer_pedido">
+            
+            <h2 id="nombre_de_persona_que_reclamo"></h2>
+            
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_cortada_cuchillo_2')">+</button> 
+                <div class="titulo_sabor">Carne Cortada Cuchillo</div> 
+                <input type="number" class="input_total" id="total_carne_cortada_cuchillo_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_cortada_cuchillo_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_suave_2')">+</button>
+                <div class="titulo_sabor">Carne Suave</div> 
+                <input type="number" class="input_total" id="total_carne_suave_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_suave_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('carne_picante_2')">+</button>
+                <div class="titulo_sabor">Carne Picante</div> 
+                <input type="number" class="input_total" id="total_carne_picante_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('carne_picante_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('pollo_2')">+</button>
+                <div class="titulo_sabor">Pollo</div> 
+                <input type="number" class="input_total" id="total_pollo_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('pollo_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('pollo_con_salsa_2')">+</button>
+                <div class="titulo_sabor">Pollo con Salsa Blanca</div> 
+                <input type="number" class="input_total" id="total_pollo_con_salsa_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('pollo_con_salsa_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('jamon_y_queso_2')">+</button>
+                <div class="titulo_sabor">Jamón y Queso</div> 
+                <input type="number" class="input_total" id="total_jamon_y_queso_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('jamon_y_queso_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('caprese_2')">+</button>
+                <div class="titulo_sabor">Caprese
+                </div> 
+                <input type="number" class="input_total" id="total_caprese_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('caprese_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('humita_2')">+</button>
+                <div class="titulo_sabor">Humita</div> 
+                <input type="number" class="input_total" id="total_humita_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('humita_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('verdura_2')">+</button>
+                <div class="titulo_sabor">Verdura</div> 
+                <input type="number" class="input_total" id="total_verdura_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('verdura_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('4_quesos_2')">+</button>
+                <div class="titulo_sabor">4 Quesos</div> 
+                <input type="number" class="input_total" id="total_4_quesos_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('4_quesos_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('roquefort_y_jamon_2')">+</button>
+                <div class="titulo_sabor">Roquefort y Jamón</div> 
+                <input type="number" class="input_total" id="total_roquefort_y_jamon_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('roquefort_y_jamon_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('queso_y_cebolla_2')">+</button>
+                <div class="titulo_sabor">Queso y Cebolla</div> 
+                <input type="number" class="input_total" id="total_queso_y_cebolla_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('queso_y_cebolla_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('dulce_de_leche_2')">+</button>
+                <div class="titulo_sabor">Dulce de Leche</div> 
+                <input type="number" class="input_total" id="total_dulce_de_leche_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('dulce_de_leche_2')">-</button>
+            </div>
+            <br>
+
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('cantinpalo_2')">+</button>
+                <div class="titulo_sabor">Cantinpalo</div> 
+                <input type="number" class="input_total" id="total_cantinpalo_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('cantinpalo_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('atun_2')">+</button>
+                <div class="titulo_sabor">Atún</div> 
+                <input type="number" class="input_total" id="total_atun_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('atun_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('calabaza_2')">+</button>
+                <div class="titulo_sabor">Calabaza</div> 
+                <input type="number" class="input_total" id="total_calabaza_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('calabaza_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('queso_al_verdeo_2')">+</button>
+                <div class="titulo_sabor">Queso al Verdeo</div> 
+                <input type="number" class="input_total" id="total_queso_al_verdeo_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('queso_al_verdeo_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('salchicha_y_cheddar_2')">+</button>
+                <div class="titulo_sabor">Salchicha y Cheddar</div> 
+                <input type="number" class="input_total" id="total_salchicha_y_cheddar_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('salchicha_y_cheddar_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('cheese_burger_2')">+</button>
+                <div class="titulo_sabor">Cheese Burger</div> 
+                <input type="number" class="input_total" id="total_cheese_burger_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('cheese_burger_2')">-</button>
+            </div>
+            <div class="div_sabor_de_empanada">
+                <button type="button" class="btn_SumayResta" onclick="sumar('ciruela_panceta_y_queso_2')">+</button>
+                <div class="titulo_sabor">Ciruela, Panceta y Queso</div> 
+                <input type="number" class="input_total" id="total_ciruela_panceta_y_queso_2" value="0" readonly/>
+                <button type="button" class="btn_SumayResta" onclick="restar('ciruela_panceta_y_queso_2')">-</button>
+            </div>
+            <br>
+
+            <br>
+
+            <button type="button" onclick="pedido_actualizado()" class="boton_normal">Actualizar este Pedido</button>
+            <br>
+
+            
+
+        </div> <!-- Fin Pagina Modificacion_pedido -->
+
+
+    </body>
+
+  <script src="./JS/seccion_empanadas.js"></script>
+
+</html>
