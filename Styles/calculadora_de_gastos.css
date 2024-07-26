@@ -55,6 +55,9 @@ h3{
   border-radius: 5px;
   border-style:double;
   margin-left: 5px;
+
+  background-color: white;
+  color:black;
 }
 
 .info_texto {
