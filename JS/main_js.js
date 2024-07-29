@@ -15,7 +15,6 @@ const saboresEmpanadas = [
 ];
 
 function validarNumero(input) {
-    if (input.value < 1) input.value = 1;
     if (input.value > 20) input.value = 20;
 }
 
@@ -28,8 +27,8 @@ function detectarEnterInicial(event) {
 
 function mostrarFormulario() {
     const numeroInput = document.getElementById('numero').value;
-    if (!numeroInput) {
-        alert("Debe digitar un número para continuar.");
+    if (!numeroInput || numeroInput <= 1) {
+        alert("Debe digitar un número entre 2 y 20 para continuar.");
         return;
     }
     cantidadPersonas = parseInt(numeroInput);
@@ -85,6 +84,7 @@ function registrarPersona() {
         alert('Por favor, ingrese un nombre.');
     }
 }
+
 
 // ----------------------------------------------------------------------------------------------------
 // Guardar en Local Storage

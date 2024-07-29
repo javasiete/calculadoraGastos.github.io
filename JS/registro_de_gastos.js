@@ -38,13 +38,13 @@ function div_inicial_con_texto(){
     personas.forEach(persona => {
         if (persona.deudora === false) {
             let valor_positivo = Math.abs(persona.gasto);
-            mensaje1 += `A ${persona.nombre} le deben ${formatearDinero(valor_positivo)}.<br>`;
+            mensaje1 += `A ${persona.nombre} le deben $${formatearDinero(valor_positivo)} por la compra de las Empanadas.<br>`;
         }
     });
 
     personas.forEach(persona => {
         if (persona.deudora === true) {
-            mensaje2 += `${persona.nombre} debe ${formatearDinero(persona.gasto)}.<br>`;
+            mensaje2 += `${persona.nombre} debe $${formatearDinero(persona.gasto)}.<br>`;
         }
     });
 
@@ -76,12 +76,20 @@ function crear_tablas_de_gastos_extras() {
         let input = document.createElement('input');
         input.type = 'number';
         input.step = '0.01';
-        input.value = '0,00';
+        input.value =   // Cambié ',' a '.' para el valor inicial.
         input.id = `gasto_extra_${persona.nombre}`;
         input.className = "input_centrado";
 
         input.addEventListener('focus', function() {
-            this.value = '';
+            if (this.value === '0.00') {
+                this.value = '';
+            }
+        });
+
+        input.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.value = '0.00';
+            }
         });
 
         input.addEventListener('keypress', function(event) {
@@ -101,27 +109,56 @@ function crear_tablas_de_gastos_extras() {
     document.getElementById('div_mencionar_gastos').appendChild(table);
 }
 
-// Función para sumar los gastos extras
-function sumar_gastos_extras() {
-    let mensaje = 'Los gastos extras son de:\n\n';
+// Función para formatear el dinero con miles separados por puntos y centavos con comas
+function formatearDinero(monto) {
+    return monto.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+// Función para verificar los gastos extras y generar el mensaje de confirmación
+function verificarGastosExtras() {
+    let personasConGastos = [];
+    let mensaje = '';
 
     personas.forEach(persona => {
         let input = document.getElementById(`gasto_extra_${persona.nombre}`);
-        let valor = input.value.replace(',', '.');
+        let monto = parseFloat(input.value.replace(',', '.')) || 0;
 
-        persona.gastoExtra = parseFloat(valor) || 0;
-
-        if (persona.gastoExtra > 0) {
-            mensaje += `${persona.nombre} gastó ${formatearDinero(persona.gastoExtra)}.\n`;
+        if (monto > 0) {
+            personasConGastos.push({ nombre: persona.nombre, monto: monto });
         }
     });
 
-    mensaje += '\n¿Confirma estos gastos?';
+    if (personasConGastos.length === 0) {
+        mensaje = "Al final nadie más compró algo y no hubieron Gastos extras.";
+    } else if (personasConGastos.length === 1) {
+        let persona = personasConGastos[0];
+        mensaje = `${persona.nombre} fue la única persona quien compró y gastó $${formatearDinero(persona.monto)}.`;
+    } else {
+        mensaje = "Los Gastos extras fueron de:\n\n";
+        personasConGastos.forEach(persona => {
+            mensaje += `${persona.nombre} gastó $${formatearDinero(persona.monto)}.\n`;
+        });
+    }
 
-    if (confirm(mensaje)) {
+    return mensaje;
+}
+
+// Función para sumar los gastos extras y confirmar los gastos
+function sumar_gastos_extras() {
+    let mensaje = verificarGastosExtras();
+
+    if (confirm(mensaje + '\n\n¿Confirma?')) {
+        personas.forEach(persona => {
+            let input = document.getElementById(`gasto_extra_${persona.nombre}`);
+            let valor = input.value.replace(',', '.');
+
+            persona.gastoExtra = parseFloat(valor) || 0;
+        });
+
         ir_pagina_3();
     }
 }
+
 
 function ir_pagina_3(){
     document.getElementById('pagina_2').style.display = 'none';
@@ -174,13 +211,13 @@ function textoResumen() {
     personas.forEach(persona => {
         if (!persona.deudora) {
             let valor_positivo = Math.abs(persona.gasto);
-            mensaje1 += `A ${persona.nombre} le deben ${formatearDinero(valor_positivo)}.<br>`;
+            mensaje1 += `A ${persona.nombre} le deben $${formatearDinero(valor_positivo)}.<br>`;
         }
     });
 
     personas.forEach(persona => {
         if (persona.deudora) {
-            mensaje2 += `${persona.nombre} debe ${formatearDinero(persona.gasto)}.<br>`;
+            mensaje2 += `${persona.nombre} debe $${formatearDinero(persona.gasto)}.<br>`;
         }
     });
 
@@ -213,11 +250,11 @@ function textoFinal() {
                 }
 
                 if (deudor.gasto === 0 && acreedor.gasto < 0) {
-                    deudorTexto += `${deudor.nombre} le pagó ${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ${deudor.nombre} ya no le debe más a nadie. Y a ${acreedor.nombre} aún le deben ${formatearDinero(Math.abs(acreedor.gasto))}.<br>`;
+                    deudorTexto += `${deudor.nombre} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ${deudor.nombre} ya no le debe más a nadie. Y a ${acreedor.nombre} aún le deben $${formatearDinero(Math.abs(acreedor.gasto))}.<br>`;
                 } else if (deudor.gasto > 0 && acreedor.gasto === 0) {
-                    deudorTexto += `${deudor.nombre} le pagó los ${formatearDinero(pago)} a ${acreedor.nombre} que le debían y ahora a ${acreedor.nombre} no le deben más nada. A ${deudor.nombre} aún le faltan pagar ${formatearDinero(deudor.gasto)}.<br>`;
+                    deudorTexto += `${deudor.nombre} le pagó los $${formatearDinero(pago)} a ${acreedor.nombre} que le debían y ahora a ${acreedor.nombre} no le deben más nada. A ${deudor.nombre} aún le faltan pagar $${formatearDinero(deudor.gasto)}.<br>`;
                 } else if (deudor.gasto === 0 && acreedor.gasto === 0) {
-                    deudorTexto += `${deudor.nombre} le pagó ${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ambos han saldado sus cuentas.<br>`;
+                    deudorTexto += `${deudor.nombre} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ambos han saldado sus cuentas.<br>`;
                 }
             }
         });

@@ -52,6 +52,8 @@ h3{
   box-sizing: border-box; /* Incluir padding y borde en el ancho total */
   font-size: 16px;
   
+  background-color: white;
+  color: black;
   border-radius: 5px;
   border-style:double;
   margin-left: 5px;

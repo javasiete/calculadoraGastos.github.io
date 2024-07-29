@@ -70,25 +70,49 @@ function crear_tablas_de_gastos_extras() {
     document.getElementById('div_mencionar_gastos').appendChild(table);
 }
 // Función para sumar los gastos extras
-function sumar_gastos_extras() {
-    let mensaje = 'Los gastos extras son de:\n\n';
-    let gastosTotales = 0;
+
+// Función para verificar los gastos extras y generar el mensaje de confirmación
+function verificarGastosExtras() {
+    let personasConGastos = [];
+    let mensaje = '';
 
     personas.forEach(persona => {
         let input = document.getElementById(`gasto_extra_${persona.nombre}`);
-        let valor = input.value;
+        let monto = parsearValor(input.value);
 
-        persona.gastoExtra = parsearValor(valor);
-        gastosTotales += persona.gastoExtra;
-
-        if (persona.gastoExtra > 0) {
-            mensaje += `${persona.nombre} gastó ${formatearDinero(persona.gastoExtra)}.\n`;
+        if (monto > 0) {
+            personasConGastos.push({ nombre: persona.nombre, monto: monto });
         }
     });
 
-    mensaje += `\nGastos totales: ${formatearDinero(gastosTotales)}.\n\n¿Confirma estos gastos?`;
+    if (personasConGastos.length === 0) {
+        alert("Para continuar y poder hacer la cuenta, primero alguien debió haber hecho algún gasto. Coloca un valor en alguno de los campos vacíos.");
+        return null; // No hay gastos, no seguir adelante
+    } else if (personasConGastos.length === 1) {
+        let persona = personasConGastos[0];
+        mensaje = `${persona.nombre} fue la única persona quien compró algo y gastó ${formatearDinero(persona.monto)}.`;
+    } else {
+        mensaje = "Personas que hicieron compras:\n\n";
+        personasConGastos.forEach(persona => {
+            mensaje += `${persona.nombre} gastó ${formatearDinero(persona.monto)}.\n`;
+        });
+    }
 
-    if (confirm(mensaje)) {
+    return mensaje;
+}
+
+// Función para sumar los gastos extras y confirmar los gastos
+function sumar_gastos_extras() {
+    let mensaje = verificarGastosExtras();
+
+    if (mensaje && confirm(mensaje + '\n\n¿Confirma?')) {
+        personas.forEach(persona => {
+            let input = document.getElementById(`gasto_extra_${persona.nombre}`);
+            let valor = parsearValor(input.value);
+
+            persona.gastoExtra = valor;
+        });
+
         ir_pagina_3();
     }
 }
