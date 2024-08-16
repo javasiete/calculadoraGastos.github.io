@@ -200,7 +200,7 @@
             Clickee en una Opción para continuar con la cuenta.<br><br>
 
             <div class="botones_eleccion">
-                <button type="button" onclick="pagina_6_grupofamiliar()" class="boton_normal">Grupo Familiar</button>
+                <button type="button" onclick="pagina_5_grupofamiliar()" class="boton_normal">Grupo Familiar</button>
                 <button type="button" onclick="pagina_6_cadaUno()" class="boton_normal">Pago Individual.</button>  
             </div>
             <br>
@@ -208,12 +208,14 @@
         </div> <!-- Fin Pagina 4 -->
 
         <div id="pagina_5_grupoFamiliar">
-            <div class="info_pantallazo">Pantalla de grupo Familiar.</div>
+            <h2>Grupo Familiar</h2>
+            <div class="info_texto">Seleccione a las personas que conforman un Grupo Familiar y luego clickee en "Confimar Grupo".</div>
+            
+            <div id="divGrupo_botones_con_nombres"></div>
 
-            <div id="nombres_grupo_familiar"></div>
+            <button type="button" class="boton_normal" onclick="confirmar_grupo()">Continuar</button>
 
-            <button type="button" onclick="consola_ver_gastos()" class="boton_normal">Ver Consola</button>
-            <br>
+            <div id="div_boton_continuar"></div>
 
         </div> <!-- Fin Pagina 5 (Grupo Familiar)  -->
 

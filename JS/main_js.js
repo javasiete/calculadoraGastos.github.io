@@ -99,14 +99,19 @@ function guardarEnLocalStorage() {
 // ----------------------------------------------------------------------------------------------------
 // Ir a las PAGINAS correspondientes:
 
+function seccion_calculadora_de_gastos() {
+    guardarEnLocalStorage()
+    window.location.href = './calculadora_de_gastos.html';
+}
+
 function seccion_empanadas() {
     guardarEnLocalStorage()
     window.location.href = './seccion_empanadas.html';
 }
 
-function seccion_calculadora_de_gastos() {
+function seccion_hamburguesas() {
     guardarEnLocalStorage()
-    window.location.href = './calculadora_de_gastos.html';
+    window.location.href = './seccion_hamburguesas.html';
 }
 
 // ----------------------------------------------------------------------------------------------------

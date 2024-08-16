@@ -290,15 +290,49 @@ function actualizarMontoFinal() {
 }
 
 // Función para la página de grupo familiar
-function pagina_6_grupofamiliar() {
+function pagina_5_grupofamiliar() {
     actualizarMontoFinal();
     if (monto_final > 0) {
-        console.log(`Monto final: $${formatearMonto(monto_final)}`);
-        alert('Lo siento. Este botón aún no está disponible.');
+
+        sumar_empanadas();
+        console.log(`El monto del total de empanadas es de ${monto_final}`);
+
+        guardandoInfo();
+
+        window.location.href = './grupo_familiar.html';
+
     } else {
         alert('El monto debe ser mayor a $0 y no puede ser un número negativo.');
     }
 }
+
+//Esta funcion añade el objeto "empanadasPedidas" a los elementos "persona".
+function sumar_empanadas() {
+    personas.forEach(persona => {
+      let totalEmpanadas = 0;
+  
+      for (const cantidad of Object.values(persona.pedidos)) {
+        totalEmpanadas += cantidad;
+      }
+  
+      persona.empanadasPedidas = totalEmpanadas;
+    });
+}
+
+//Guardar esa info en LocalStorage:
+
+function guardandoInfo(){
+    // Guardar el array "personas" en localStorage
+    localStorage.setItem('personas', JSON.stringify(personas));
+
+    // Guardar la variable "monto_final" en localStorage
+    localStorage.setItem('monto_final', monto_final.toString());
+}
+
+//-----------------------------------------------------------------------------
+
+
+
 
 // Función para la página de cálculo por persona
 function pagina_6_cadaUno() {
