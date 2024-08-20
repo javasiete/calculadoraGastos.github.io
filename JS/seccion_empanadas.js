@@ -60,7 +60,7 @@ function fin_del_pedido() {
         'carne_cortada_cuchillo', 'carne_suave', 'carne_picante', 'pollo',
         'pollo_con_salsa', 'jamon_y_queso', 'caprese', 'humita', 'verdura',
         '4_quesos', 'roquefort_y_jamon', 'queso_y_cebolla', 'dulce_de_leche',
-        'cantinpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
+        'cantimpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
         'cheese_burger', 'ciruela_panceta_y_queso'
     ];
     
@@ -130,7 +130,7 @@ function mostrarDetallesFinales() {
         'carne_cortada_cuchillo', 'carne_suave', 'carne_picante', 'pollo',
         'pollo_con_salsa', 'jamon_y_queso', 'caprese', 'humita', 'verdura',
         '4_quesos', 'roquefort_y_jamon', 'queso_y_cebolla', 'dulce_de_leche',
-        'cantinpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
+        'cantimpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
         'cheese_burger', 'ciruela_panceta_y_queso'
     ];
     
@@ -193,7 +193,7 @@ function mostrarFormularioModificacion(index) {
         'carne_cortada_cuchillo', 'carne_suave', 'carne_picante', 'pollo',
         'pollo_con_salsa', 'jamon_y_queso', 'caprese', 'humita', 'verdura',
         '4_quesos', 'roquefort_y_jamon', 'queso_y_cebolla', 'dulce_de_leche',
-        'cantinpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
+        'cantimpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
         'cheese_burger', 'ciruela_panceta_y_queso'
     ];
     
@@ -217,7 +217,7 @@ function pedido_actualizado() {
         'carne_cortada_cuchillo', 'carne_suave', 'carne_picante', 'pollo',
         'pollo_con_salsa', 'jamon_y_queso', 'caprese', 'humita', 'verdura',
         '4_quesos', 'roquefort_y_jamon', 'queso_y_cebolla', 'dulce_de_leche',
-        'cantinpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
+        'cantimpalo', 'atun', 'calabaza', 'queso_al_verdeo', 'salchicha_y_cheddar',
         'cheese_burger', 'ciruela_panceta_y_queso'
     ];
     

@@ -16,16 +16,15 @@
     <body>
         <div id="pagina_1">
             <h2>Grupo Familiar</h2>
-            <div class="info_texto">Seleccione a las personas que conforman un Grupo Familiar y luego clickee en "Confimar Grupo".</div>
+            <div class="info_texto" id="texto_conformar_grupo">Seleccione a las personas que conforman un Grupo Familiar y luego clickee en "Conformar Grupo".</div>
             
-            <div id="div_botones_con_nombres"></div>
+            <div id="div_botones_con_nombres" class="div_botones_que_se_crean"></div>
 
-            <button type="button" class="boton_normal" onclick="confirmar_grupo()">Confirmar Grupo</button>
+            <button type="button" class="boton_normal" onclick="confirmar_grupo()" id="btn_conformar_grupo">Conformar Grupo</button>
 
+            <div id="div_continue">Si ya no hay más Grupos que formar, entonces clickee en "Continuar".</div>
             <button type="button" class="boton_normal" id="btn_continue" onclick="pagina_2()">Continuar</button>
-            <div id="div_continue">Si ya no hay más Grupos que formar, entonces clickee aquí.</div>
             
-
         </div>
 
 
@@ -34,22 +33,10 @@
             Clickee a la persona que pagó las Empanadas. <br><br>
 
             <!--Aca aparecen los botones con nombres para indicar quien pagó las Empanadas-->
-            <div id="div_quien_pago_empanadas"></div>
+            <div id="div_quien_pago_empanadas" class="div_botones_que_se_crean"></div>
 
         </div> <!-- Fin Pagina 2 -->
 
-        <div id="pagina_3">
-            <h2> Registro de Gastos</h2>
-
-        </div> <!-- Fin Pagina 3 -->
-
-        <div id="pagina_4">
-            Pagina 4
-        </div> <!-- Fin Pagina 4 -->
-
-        <div id="pagina_5">
-            Pagina 5
-        </div> <!-- Fin Pagina 5 -->
 
     </body>
 

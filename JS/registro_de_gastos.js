@@ -52,6 +52,7 @@ function div_inicial_con_texto(){
     document.getElementById('div_inicial_deudores').innerHTML = mensaje2;
 }
 
+// Funcion para ir a la Pagina_2 que se activa al apretar el Botón:
 function ir_pagina_2(){
     crear_tablas_de_gastos_extras();
     document.getElementById('pagina_1').style.display = 'none';
