@@ -1,4 +1,4 @@
-//Función que se activa apenas se abre la ventana, hace que se active la función que llama a los datos del Local Storage:
+// Función que se activa apenas se abre la ventana, hace que se active la función que llama a los datos del Local Storage:
 document.addEventListener('DOMContentLoaded', (event) => {
     cargarDesdeLocalStorage();
     resetear_array();
@@ -23,7 +23,7 @@ function resetear_array() {
         persona.gasto = 0; // Añadir el objeto "gasto" con valor 0
     });
 
-    repartir_gastos(); //Esta funcion le asigna los costos de lo que gastó cada Persona.
+    repartir_gastos(); // Esta función le asigna los costos de lo que gastó cada Persona.
 }
 
 function repartir_gastos() {
@@ -99,7 +99,8 @@ function confirmar_grupo() {
         const nuevaPersona = {
             nombre: nombresFormateados,
             gasto: totalGastoUnificado,
-            empanadasPedidas: totalEmpanadasUnificadas
+            empanadasPedidas: totalEmpanadasUnificadas,
+            grupoFamiliar: true // Asignar grupoFamiliar a true para la persona unificada
         };
 
         // Remueve a las personas cuando estaban en solitario y agrega a la persona como persona unificada.
@@ -124,17 +125,53 @@ function confirmar_grupo() {
     }
 }
 
+
 //------------------------------------------------------------------------------------------------------------------
 // PAGINA 2
 
-//Desaparece la Pagina_1 y muestra la Pagina_2:
+// Se activa cuando el usuario clickea que en Continuar luego de que ya forma el GrupoFamiliar:
 function pagina_2() {
+
+    // Hacemos que se muestre el contenido de la PAG_2:
     document.getElementById('pagina_1').style.display = 'none';
     document.getElementById('pagina_2').style.display = 'flex';
-    crear_div_quien_pago_empanadas(); //Funcion que crea los botones para indicar quien pagó.
+
+    // Mostramos el costo por empanada en el h3
+    const costo_por_empanada = monto_final / personas.reduce((total, persona) => total + (persona.empanadasPedidas || 0), 0);
+    const costoPorEmpanadaFormateado = costo_por_empanada.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('texto_costo_por_empanadas').textContent = `Cada empanada costó $${costoPorEmpanadaFormateado}.`;
+
+    // Mostramos lo que debe cada persona en el div
+    const divCadaUnoDebe = document.getElementById('texto_cada_uno_debe');
+    divCadaUnoDebe.innerHTML = ''; // Limpiamos contenido previo
+
+    personas.forEach(persona => {
+        const gastoFormateado = persona.gasto.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const cantidadEmpanadas = persona.empanadasPedidas || 0;
+        const textoEmpanada = cantidadEmpanadas === 1 ? 'empanada' : 'empanadas';
+        const verboPidio = persona.grupoFamiliar ? 'pidieron' : 'pidió';
+        const verboDebe = persona.grupoFamiliar ? 'deben' : 'debe';
+        const texto = document.createElement('p');
+        texto.textContent = `${persona.nombre} ${verboPidio} ${cantidadEmpanadas} ${textoEmpanada}, ${verboDebe} $${gastoFormateado}.`;
+        divCadaUnoDebe.appendChild(texto);
+    });
+
+}
+
+
+
+// Función que se activa cuando apretamos el Botón "División de Gastos" (en PAG.2):
+function ir_a_pagina_3() {
+    // Acá hacemos que la Pag_3 se muestre, y la Pag_2 desaparezca:
+    document.getElementById('pagina_2').style.display = 'none';
+    document.getElementById('pagina_3').style.display = 'flex';
+
+    crear_div_quien_pago_empanadas(); // Función que crea los botones para indicar quien pagó.
 }
 
 //------------------------------------------------------------------------------------------------------------------
+// PAGINA 3
+
 // Función para CREAR los botones de quién pagó las empanadas:
 function crear_div_quien_pago_empanadas() {
     const divGrupo = document.getElementById('div_quien_pago_empanadas');
@@ -151,44 +188,55 @@ function crear_div_quien_pago_empanadas() {
     });
 }
 
-//------------------------------------------------------------------------------------------------------------------
 // Función para confirmar el pago del responsable y asignar el gasto
-function confirmar_pago_responsable(persona) {
+function confirmar_pago_responsable(personaResponsable) {
     const montoFinalFormateado = monto_final.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const confirmacion = confirm(`${persona.nombre} fue quien pagó los $${montoFinalFormateado} por el pedido de Empanadas?`);
+    const confirmacion = confirm(`${personaResponsable.nombre} fue quien pagó los $${montoFinalFormateado} por el pedido de Empanadas?`);
 
     if (confirmacion) {
-        asignar_gasto(persona);
+        // Le asigna el gasto a la persona responsable del pago por las Empanadas:
+        asignar_gasto(personaResponsable);
+
+        //Los datos se pasan a la proxima pagina asi:
+        //Los deudores tienen: gasto=Positivo y deudora=true.
+        //El que pago tiene: gasto=Negativo y deudora=false.
+
+        // Guardamos en LocalStorage antes de pasar de página web:
+        guardarEnLocalStorage();
+
+        // Te lleva a la pagina de Registro de Gastos:
+        window.location.href = './registro_de_gastos.html';
     }
 }
 
 // Función para asignarle el Gasto a la Persona que pagó las empanadas:
-function asignar_gasto(persona) {
-    gasto_prueba = persona.gasto;
-    persona.gasto = monto_final;
-    console.log(`${persona.nombre} es quien pagó las empanadas. Y pagó un total de $${persona.gasto}.`);
+function asignar_gasto(personaResponsable) {
+    const gastoPrevio = personaResponsable.gasto;
+    personaResponsable.gasto = gastoPrevio - monto_final;
 
-    persona.gasto = -(monto_final - gasto_prueba);
-
-    aniadir_personas_deudoras();
-    guardarEnLocalStorage();
-
-    window.location.href = './registro_de_gastos.html';
-}
-
-// Funcion para implementar el objeto Deudora en el array Personas:
-function aniadir_personas_deudoras() {
+    // Cambiar estado de deudora y gasto de todas las personas
     personas.forEach(persona => {
-        if (persona.gasto <= 0) {
+        if (persona === personaResponsable) {
+            // La persona que pagó es deudora=FALSE y su gasto lo pongo en positivo (y luego a negativo).
             persona.deudora = false;
+            persona.gasto = Math.abs(persona.gasto); // Aca creo que esta en positivo.
+            //Pero aca la paso a NEGATIVO:
+            persona.gasto = -persona.gasto;
         } else {
+            // Las demás personas son deudora=TRUE y su gasto es positivo.
             persona.deudora = true;
+            persona.gasto = Math.abs(persona.gasto);
         }
     });
+
+    console.log('Personas actualizadas:', personas);
 }
 
-// Funcion que guarda los datos del array Personas en el Local Storage:
+// Función para guardar datos en el Local Storage:
 function guardarEnLocalStorage() {
-    const personasJSON = JSON.stringify(personas);
-    localStorage.setItem('personas', personasJSON);
+    const personas_en_JSON = JSON.stringify(personas);
+    localStorage.setItem('personas', personas_en_JSON);
+    
+    const montoFinal_en_JSON = JSON.stringify(monto_final);
+    localStorage.setItem('monto_final', montoFinal_en_JSON);
 }

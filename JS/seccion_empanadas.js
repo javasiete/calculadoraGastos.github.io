@@ -17,9 +17,19 @@ function cargarDesdeLocalStorage() {
         personas.forEach(persona => {
             persona.pedidos = {}; // Reinicia los pedidos
         });
+
+        //Funcion que añade el elemento "grupoFamiliar" al array "personas":
+        elemento_grupoFamiliar();
+
         console.log('Array "personas" cargado desde localStorage:', personas);
         actualizarInterfaz();
     }
+}
+
+function elemento_grupoFamiliar() {
+    personas.forEach(persona => {
+        persona.grupoFamiliar = false;
+    });
 }
 
 // Función para actualizar la interfaz de usuario
@@ -294,12 +304,20 @@ function pagina_5_grupofamiliar() {
     actualizarMontoFinal();
     if (monto_final > 0) {
 
-        sumar_empanadas();
-        console.log(`El monto del total de empanadas es de ${monto_final}`);
+        const confirmacion = confirm('Si desea armar un "Grupo Familiar", clickee en Aceptar.');
 
-        guardandoInfo();
-
-        window.location.href = './grupo_familiar.html';
+        if (confirmacion) {
+            sumar_empanadas();
+            console.log(`El monto del total de empanadas es de ${monto_final}`);
+    
+            guardandoInfo();
+    
+            window.location.href = './grupo_familiar.html';
+        } else {
+            // Si el usuario cancela, no hacer nada
+            return;
+        }
+    
 
     } else {
         alert('El monto debe ser mayor a $0 y no puede ser un número negativo.');
@@ -429,6 +447,11 @@ function seleccionarPersonaQuePago(nombre) {
                 console.log(`${persona.nombre} ${deudoraStatus} con un gasto de $${formatearMonto(parseFloat(persona.gasto))}`);
             });
 
+            //Los datos se pasan a la proxima pagina asi:
+            //Los deudores tienen: gasto=Positivo y deudora=true.
+            //El que pago tiene: gasto=Negativo y deudora=false.
+
+            //Guardamos en LocalStorage:
             const personas_en_JSON = JSON.stringify(personas);
             localStorage.setItem('personas', personas_en_JSON);
             console.log('Array "personas" guardado en localStorage.');

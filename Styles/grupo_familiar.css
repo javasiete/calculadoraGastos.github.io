@@ -63,6 +63,8 @@ h3{
   padding: 5px 0px;
 }
 
+
+
 /*----------------------------------------------------------------------------------*/
 /*Pagina 1*/
 
@@ -106,6 +108,15 @@ h3{
   justify-content: center;
 }
 
+.boton_normal_2{
+  padding: 5px 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
 
 /*----------------------------------------------------------------------------------*/
 /*Pagina 3*/
@@ -115,24 +126,6 @@ h3{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-/*----------------------------------------------------------------------------------*/
-/*Pagina 4*/
-
-#pagina_4{
-  display: none;
-  flex-direction: column;
-  align-items: center;
-}
-
-/*----------------------------------------------------------------------------------*/
-/*Pagina 5*/
-
-#pagina_5{
-  display: none;
-  flex-direction: column;
-  align-items: center;
 }
 
 

@@ -27,15 +27,29 @@
             
         </div>
 
-
         <div id="pagina_2">
+            <h2>Registro de Gastos</h2>
+            
+            <h3 id="texto_costo_por_empanadas">Cada empanada costo...</h3>
+            <h3 id="texto_cada_uno_debe">Persona1 pidió X empanadas, debe $...</h3>
+
+            <button type="button" class="boton_normal_2" onclick="ir_a_pagina_3()" id="btn_conformar_grupo">Divisón de Gastos</button>
+            <div class="info_texto" id="texto_conformar_grupo">Te lleva a la siguiente Página para indicar quien abonó las Empanadas.<br>
+                Continuando luego con el "Registro de Gastos" el cual detallará "Quién le debe a quién".</div>
+
+            <button type="button" class="boton_normal_2" onclick="finalizar_app()" id="btn_conformar_grupo">Finalizar Programa</button>
+            <div class="info_texto" id="texto_conformar_grupo">Finaliza el Programa y vuelve a la Página de Inicio.</div>
+
+        </div> <!-- Fin Pagina 2 -->
+
+        <div id="pagina_3">
             <h2>Registro de Gastos</h2>
             Clickee a la persona que pagó las Empanadas. <br><br>
 
             <!--Aca aparecen los botones con nombres para indicar quien pagó las Empanadas-->
             <div id="div_quien_pago_empanadas" class="div_botones_que_se_crean"></div>
 
-        </div> <!-- Fin Pagina 2 -->
+        </div> <!-- Fin Pagina 3 -->
 
 
     </body>
