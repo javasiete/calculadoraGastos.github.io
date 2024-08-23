@@ -1,0 +1,138 @@
+/* Selector universal */
+* {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+}
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px 0px;
+  
+}
+html{
+  width:100%;
+  height: 100%;
+  
+}
+
+h1{
+  color: orange;
+  text-decoration: underline;
+  padding-bottom: 10px;
+  padding-bottom: 10px;
+}
+h2{
+  padding-bottom: 10px;
+}
+h3{
+  padding-bottom: 10px;
+}
+
+.boton_normal{
+  padding: 5px 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0px;
+}
+
+.input_centrado {
+  width: 90px; /* Ancho del input */
+  padding: 2px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+  font-size: 16px;
+  
+  border-radius: 5px;
+  border-style:double;
+  margin-left: 5px;
+
+  background-color: white;
+  color:black;
+}
+
+.info_texto {
+  padding: 5px 0px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 1*/
+
+#pagina_1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.div_inputs_con_items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 2*/
+#pagina_2{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#div_mencionar_gastos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*Pagina 3*/
+
+#pagina_3{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#cadaUno{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+#detalle_de_lo_gastado{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+
+ 
+  
+
+
+
+
+} /*Fin de las Mediaqueries*/

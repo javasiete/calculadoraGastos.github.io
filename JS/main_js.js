@@ -114,6 +114,11 @@ function seccion_hamburguesas() {
     window.location.href = './seccion_hamburguesas.html';
 }
 
+function seccion_restaurante() {
+    guardarEnLocalStorage()
+    window.location.href = './seccion_restaurante.html';
+}
+
 // ----------------------------------------------------------------------------------------------------
 
 function actualizarNumeroDePedido() {

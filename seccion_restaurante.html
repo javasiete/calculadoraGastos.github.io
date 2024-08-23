@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Seccion Restaurante</title> <!-- TITULO EN LA PESTAÑA -->
+
+        <!-- Link a los iconitos -->
+        <script src="https://kit.fontawesome.com/c3d324dd6f.js" crossorigin="anonymous"></script>
+
+        <!-- Link a los Estilos en CSS -->
+        <link rel="stylesheet" href="./Styles/seccion_restaurante.css"/>
+
+    </head>
+
+    <body>
+        <div id="pagina_1">
+
+            <h2> Consumos que se hicieron</h2>
+            
+            <div class="info_texto">Escriba todos los "Items" que aparecen en el Tique.<br>
+                (Clickee en el botón "Iñadir Item" para añadir un nuevo Consumo a la Lista)
+            </div>
+
+            <div class="div_inputs_con_items">
+                <div id="inputs_creados"></div>
+               
+            </div>
+
+            <button type="button" onclick="aniadir_input_nuevo()" class="boton_normal">Añadiiiiiir</button>
+
+            
+            <br>
+                <button type="button" onclick="pagina_2()" class="boton_normal">Continuar</button>
+                Te lleva a la siguiente Página.
+            <br>
+
+        </div>
+
+
+    </body>
+
+  <script src="JS/seccion_restaurante.js"></script>
+
+</html>
