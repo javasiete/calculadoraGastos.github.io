@@ -44,7 +44,8 @@ function div_inicial_con_texto(){
 
     personas.forEach(persona => {
         if (persona.deudora === true) {
-            mensaje2 += `${persona.nombre} debe $${formatearDinero(persona.gasto)}.<br>`;
+            let verbo = persona.grupoFamiliar ? 'deben' : 'debe';
+            mensaje2 += `${persona.nombre} ${verbo} $${formatearDinero(persona.gasto)}.<br>`;
         }
     });
 
@@ -77,7 +78,7 @@ function crear_tablas_de_gastos_extras() {
         let input = document.createElement('input');
         input.type = 'number';
         input.step = '0.01';
-        input.value =   // Cambié ',' a '.' para el valor inicial.
+        input.value = '0.00'; // Cambié ',' a '.' para el valor inicial.
         input.id = `gasto_extra_${persona.nombre}`;
         input.className = "input_centrado";
 
@@ -218,7 +219,8 @@ function textoResumen() {
 
     personas.forEach(persona => {
         if (persona.deudora) {
-            mensaje2 += `${persona.nombre} debe $${formatearDinero(persona.gasto)}.<br>`;
+            let verbo = persona.grupoFamiliar ? 'deben' : 'debe';
+            mensaje2 += `${persona.nombre} ${verbo} $${formatearDinero(persona.gasto)}.<br>`;
         }
     });
 
@@ -234,7 +236,7 @@ function textoFinal() {
     let deudores = personas.filter(persona => persona.gasto > 0);
     let acreedores = personas.filter(persona => persona.gasto < 0);
 
-    deudores.forEach((deudor) => {
+    deudores.forEach((deudor, index) => {
         let deudorTexto = '';
 
         acreedores.forEach(acreedor => {
@@ -243,29 +245,61 @@ function textoFinal() {
                 deudor.gasto -= pago;
                 acreedor.gasto += pago;
 
-                if (deudor.gasto <= 0.05 && deudor.gasto >= -0.05) {
+                // Redondeo a cero si la diferencia es muy pequeña
+                if (Math.abs(deudor.gasto) <= 0.05) {
                     deudor.gasto = 0;
                 }
-                if (acreedor.gasto <= 0.05 && acreedor.gasto >= -0.05) {
+                if (Math.abs(acreedor.gasto) <= 0.05) {
                     acreedor.gasto = 0;
                 }
 
-                if (deudor.gasto === 0 && acreedor.gasto < 0) {
-                    deudorTexto += `${deudor.nombre} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ${deudor.nombre} ya no le debe más a nadie. Y a ${acreedor.nombre} aún le deben $${formatearDinero(Math.abs(acreedor.gasto))}.<br>`;
-                } else if (deudor.gasto > 0 && acreedor.gasto === 0) {
-                    deudorTexto += `${deudor.nombre} le pagó los $${formatearDinero(pago)} a ${acreedor.nombre} que le debían y ahora a ${acreedor.nombre} no le deben más nada. A ${deudor.nombre} aún le faltan pagar $${formatearDinero(deudor.gasto)}.<br>`;
-                } else if (deudor.gasto === 0 && acreedor.gasto === 0) {
-                    deudorTexto += `${deudor.nombre} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ambos han saldado sus cuentas.<br>`;
+                let sujetoDeudor = deudor.nombre;
+
+                // Verificar si ambas cuentas están saldadas
+                if (deudor.gasto === 0 && acreedor.gasto === 0) {
+                    if (deudor.grupoFamiliar) {
+                        deudorTexto += `${sujetoDeudor} le pagaron $${formatearDinero(pago)} a ${acreedor.nombre}. Y ahora ambas cuentas están saldadas.<br>\n`;
+                    } else {
+                        deudorTexto += `${sujetoDeudor} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Y ahora ambas cuentas están saldadas.<br>\n`;
+                    }
+                } else {
+                    if (deudor.grupoFamiliar) {
+                        if (acreedor.gasto === 0) {
+                            deudorTexto += `${sujetoDeudor} le pagaron $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora a ${acreedor.nombre} ya no le deben más.<br>\n`;
+                        } else {
+                            deudorTexto += `${sujetoDeudor} le pagaron $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora a ${acreedor.nombre} aún le deben $${formatearDinero(Math.abs(acreedor.gasto))}.\n`;
+                        }
+                    } else {
+                        if (deudor.gasto === 0) {
+                            deudorTexto += `${sujetoDeudor} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}. Ahora ${sujetoDeudor} ya no le debe más a nadie. `;
+                            if (acreedor.gasto === 0) {
+                                deudorTexto += `Y ahora a ${acreedor.nombre} no le deben más.\n`;
+                            } else if (acreedor.gasto < 0) {
+                                deudorTexto += `Y a ${acreedor.nombre} aún le están debiendo $${formatearDinero(Math.abs(acreedor.gasto))}.\n`;
+                            }
+                        } else {
+                            deudorTexto += `${sujetoDeudor} le pagó $${formatearDinero(pago)} a ${acreedor.nombre}.`;
+                            if (acreedor.gasto === 0) {
+                                deudorTexto += ` Y ahora a ${acreedor.nombre} no le deben más.<br>`;
+                            } else {
+                                deudorTexto += ` Ahora a ${acreedor.nombre} aún le deben $${formatearDinero(Math.abs(acreedor.gasto))}.\n`;
+                            }
+                        }
+                    }
                 }
             }
         });
 
+        // Añadir dos <br> solo si hay texto para este deudor
         if (deudorTexto) {
-            mensajeFinal += deudorTexto + '<br><br>';
+            mensajeFinal += (index > 0 ? '<br><br>' : '') + deudorTexto + '<br>';
         }
     });
 
-    document.getElementById('div_final_2').innerHTML = mensajeFinal;
+    const divFinalTexto = document.getElementById('div_final_texto');
+    if (divFinalTexto) {
+        divFinalTexto.innerHTML = mensajeFinal;
+    } else {
+        console.error('Elemento div_final_texto no encontrado');
+    }
 }
-
-

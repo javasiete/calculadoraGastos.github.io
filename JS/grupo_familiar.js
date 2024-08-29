@@ -61,8 +61,10 @@ function mostrar_botones_nombres() {
 function seleccionarBoton(button) {
     button.classList.toggle('btn_clickeado');
     if (button.classList.contains('btn_clickeado')) {
+        button.classList.add('seleccionado'); // Le añade la clase "seleccionado"
         button.style.boxShadow = '0 0 20px white';
     } else {
+        button.classList.remove('seleccionado'); // Quita la clase "seleccionado"
         button.style.boxShadow = 'none';
     }
 }
@@ -155,10 +157,7 @@ function pagina_2() {
         texto.textContent = `${persona.nombre} ${verboPidio} ${cantidadEmpanadas} ${textoEmpanada}, ${verboDebe} $${gastoFormateado}.`;
         divCadaUnoDebe.appendChild(texto);
     });
-
 }
-
-
 
 // Función que se activa cuando apretamos el Botón "División de Gastos" (en PAG.2):
 function ir_a_pagina_3() {

@@ -30,13 +30,16 @@ function formatearDinero(valor) {
     return valor.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
 }
 
-// Textos iniciales que muestran Quienes deben por el momento (Div inicial)
+// Textos iniciales que muestran quiénes deben por el momento (Div inicial)
 function div_inicial_con_texto(){
     let mensaje1 = ''; 
     let mensaje2 = ''; 
+    let mensajeCero = ''; // Nuevo mensaje para personas con gasto = 0
 
     personas.forEach(persona => {
-        if (persona.deudora === false) {
+        if (persona.gasto === 0 && persona.deudora === false) {
+            mensajeCero += `${persona.nombre} no comió hamburguesa, así que no debe nada.<br>`;
+        } else if (persona.deudora === false) {
             let valor_positivo = Math.abs(persona.gasto);
             mensaje1 += `A ${persona.nombre} le deben $${formatearDinero(valor_positivo)} por el pago del Pedido de Hamburguesas.<br>`;
         }
@@ -50,6 +53,7 @@ function div_inicial_con_texto(){
 
     document.getElementById('div_inicial_leDeben').innerHTML = mensaje1;
     document.getElementById('div_inicial_deudores').innerHTML = mensaje2;
+    document.getElementById('div_inicial_en_cero').innerHTML = mensajeCero; // Añadir mensaje para gasto = 0
 }
 
 function ir_pagina_2(){

@@ -18,22 +18,69 @@
 
             <h2> Consumos que se hicieron</h2>
             
-            <div class="info_texto">Escriba todos los "Items" que aparecen en el Tique.<br>
-                (Clickee en el botón "Iñadir Item" para añadir un nuevo Consumo a la Lista)
+            <div class="info_texto">
+                Escriba todos los "Items" que aparecen en el Tique.<br>
             </div>
+
+            <button type="button" onclick="mostrar_info_aclaracion()" id="boton_flechita_on">
+                <i class="fa-solid fa-sort-down" id="flechita"></i>
+                Aclaración de los Inputs
+                <i class="fa-solid fa-sort-down" id="flechita"></i>    
+            </button>
+            <div id="info_aclaracion">
+                *Cant: Indique cuantas consumisiones de ese Item hubieron.<br>
+                *Item: Nombre del Item.<br>
+                *Costo: Precio del Item.<br>
+                *Compartida: Marque si el Item fue compartido entre varios.
+            </div>
+            <button type="button" onclick="esconder_info_aclaracion()" id="boton_flechita_off">
+                <i class="fa-solid fa-sort-up" id="flechita"></i>
+                Esconder
+                <i class="fa-solid fa-sort-up" id="flechita"></i>    
+            </button>
 
             <div class="div_inputs_con_items">
-                <div id="inputs_creados"></div>
-               
+                <div id="inputs_creados"></div>   
             </div>
 
-            <button type="button" onclick="aniadir_input_nuevo()" class="boton_normal">Añadiiiiiir</button>
 
+            <div class="div_botones_iniciales">
+                <p>Añada fila a la tabla clickeando aquí.</p>
+                <button type="button" onclick="aniadir_input_nuevo(document.querySelector('#inputs_creados table'))"  class="boton_normal_2">Añadir Fila</button>
+
+                <p class="p_info">Cuando finalice de cargar los gastos, clickee en "Continuar".</p>
+                <button type="button" onclick="pagina_2()" class="boton_normal_2">Continuar</button>
+                
+                <div id="boton_escondido">
+                    <p class="p_info">Elimine la ultima fila de la tabla clickeando aquí.</p>
+                    <button type="button" onclick="eliminar_fila_tabla()" class="boton_normal_2">Eliminar Fila</button>
+                </div>
+
+            </div>
             
-            <br>
-                <button type="button" onclick="pagina_2()" class="boton_normal">Continuar</button>
-                Te lleva a la siguiente Página.
-            <br>
+
+
+        </div>
+
+        <div id="pagina_2">
+            <h2> Indicar Consumisiones</h2>
+            
+            <div class="info_texto">Coloque cuántos consumos tuvo cada Persona.</div>
+
+            <h2 id="div_con_platillo"></h2>
+            <div id="div_indicador"></div>
+            <div id="div_mostrando_botones_con_nombre"></div>
+
+            <button type="button" onclick="ver_otro_plato()"  class="boton_normal" id="ver_otro_plato">Registrar Pedido</button>
+
+        </div>
+
+        <div id="pagina_3">
+
+            <h2> Resumen de Gastos</h2>
+            
+            <div class="info_texto" id="resumen_total_gastado">Total Gastado: </div>
+            <div class="info_texto" id="resumen_por_persona">Cada persona gasto...</div>
 
         </div>
 

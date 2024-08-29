@@ -27,7 +27,6 @@ h1{
   color: orange;
   text-decoration: underline;
   padding-bottom: 10px;
-  padding-bottom: 10px;
 }
 h2{
   padding-bottom: 10px;
@@ -43,10 +42,66 @@ h3{
   font-size: 16px;
   font-weight: bold;
   margin: 20px 0px;
+  cursor:pointer;
+}
+
+.boton_normal_2{
+  padding: 5px 5px;
+  background-color: bisque;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor:pointer;
+}
+
+.btn_nombre{ /*Esta configuración tambien aparece en Seccion_Empanadas*/
+  padding: 10px 15px;
+  background-color: rgb(73, 111, 133);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+  cursor:pointer;
+}
+.btn_nombre.seleccionado{ /*Esta configuración tambien aparece en Seccion_Empanadas*/
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0px 0px 10px white;
+  cursor:pointer;
 }
 
 .input_centrado {
   width: 90px; /* Ancho del input */
+  padding: 2px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+  font-size: 16px;
+  
+  border-radius: 5px;
+  border-style:double;
+  margin-left: 5px;
+
+  background-color: white;
+  color:black;
+}
+
+.input_item {
+  width: 150px; /* Ancho del input */
+  padding: 2px; /* Espaciado interno */
+  text-align: center; /* Centrar el texto */
+  box-sizing: border-box; /* Incluir padding y borde en el ancho total */
+  font-size: 16px;
+  
+  border-radius: 5px;
+  border-style:double;
+  margin-left: 5px;
+
+  background-color: white;
+  color:black;
+}
+
+.input_cantidad {
+  width: 60px; /* Ancho del input */
   padding: 2px; /* Espaciado interno */
   text-align: center; /* Centrar el texto */
   box-sizing: border-box; /* Incluir padding y borde en el ancho total */
@@ -75,12 +130,63 @@ h3{
   padding-bottom: 20px;
 }
 
+#info_aclaracion{
+  color: red;
+  border: 1px solid red;
+  display: none;
+}
+#boton_flechita_on{
+  color: red;
+  cursor: pointer;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+  font-size: 15px;
+}
+#boton_flechita_off{
+  color: red;
+  cursor: pointer;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+  font-size: 15px;
+  display: none;
+}
+
+#flechita{
+  color: red;
+  cursor: pointer;
+}
+
 .div_inputs_con_items{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 20px;
+  padding: 20px;
+}
+
+.div_botones_iniciales{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.p_info{
+  padding-top: 20px;
+}
+
+
+#boton_escondido{
+  display:none;
+  cursor:pointer;
 }
 
 /*----------------------------------------------------------------------------------*/
@@ -90,38 +196,21 @@ h3{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-#div_mencionar_gastos{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0px;
+  padding-bottom: 20px;
 }
 
 /*----------------------------------------------------------------------------------*/
-/*Pagina 3*/
+/*Pagina 1*/
 
 #pagina_3{
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
+  font-size: 16px;
 }
 
-#cadaUno{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 15px;
-}
-
-#detalle_de_lo_gastado{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 15px;
-}
 
 
 
